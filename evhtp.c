@@ -3947,6 +3947,7 @@ evhtp_connection_free(evhtp_connection_t * connection) {
         if (connection->ssl != NULL) {
             SSL_set_shutdown(connection->ssl, SSL_RECEIVED_SHUTDOWN);
             SSL_shutdown(connection->ssl);
+            SSL_free(connection->ssl);
         }
 #endif
         bufferevent_free(connection->bev);
